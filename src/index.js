@@ -40,38 +40,38 @@ function getQueryVariable(variable)
 }
 
 // // Firebase stuff - uncommment if using firebase
-// firebase.firestore().enablePersistence()
-// .catch(function(err) {
-//     if (err.code == 'failed-precondition') {
-//         // Multiple tabs open, persistence can only be enabled
-//         // in one tab at a a time.
-//         // ...
-//     } else if (err.code == 'unimplemented') {
-//         // The current browser does not support all of the
-//         // features required to enable persistence
-//         // ...
-//     }
-// });
+    firebase.firestore().enablePersistence()
+    .catch(function(err) {
+        if (err.code == 'failed-precondition') {
+         // Multiple tabs open, persistence can only be enabled
+        // in one tab at a a time.
+         // ...
+     } else if (err.code == 'unimplemented') {
+         // The current browser does not support all of the
+         // features required to enable persistence
+       // ...
+     }
+ });
 
-// firebase.auth().signInAnonymously().catch(function(error) {
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-// });
+ firebase.auth().signInAnonymously().catch(function(error) {
+     var errorCode = error.code;
+     var errorMessage = error.message;
+ });
 
-// var uid;
-// firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-//     var isAnonymous = user.isAnonymous;
-//     uid = user.uid;
-//     } 
-// });
+ var uid;
+ firebase.auth().onAuthStateChanged(function(user) {
+     if (user) {
+     var isAnonymous = user.isAnonymous;
+     uid = user.uid;
+     } 
+ });
 
 // Consent form
 var check_consent = function (elem) {
-    // if ($('#consent_checkbox1').is(':checked') && $('#consent_checkbox2').is(':checked') &&
-    //     $('#consent_checkbox3').is(':checked') && $('#consent_checkbox4').is(':checked') &&
-    //     $('#consent_checkbox5').is(':checked') && $('#consent_checkbox6').is(':checked') &&
-    //     $('#consent_checkbox7').is(':checked')) {
+     if ($('#consent_checkbox1').is(':checked') && $('#consent_checkbox2').is(':checked') &&
+         $('#consent_checkbox3').is(':checked') && $('#consent_checkbox4').is(':checked') &&
+         $('#consent_checkbox5').is(':checked') && $('#consent_checkbox6').is(':checked') &&
+         $('#consent_checkbox7').is(':checked')) {
     if (1 == 1) {
 
         document.getElementById('consent').innerHTML = "";
@@ -103,16 +103,16 @@ var check_consent = function (elem) {
             });
             
             // Firebase stuff - uncomment if using firebase
-            // db.collection("tasks").doc('spaceship_game').collection('subjects').doc(uid).set(game.data);
+            db.collection("tasks").doc('spaceship_game').collection('subjects').doc(uid).set(game.data);
             
-            // db.collection("tasks").doc('spaceship_game').collection('subjects').doc(uid).update({
-            //     subjectID: game.subjectID,
-            //     date: new Date().toLocaleDateString(),
-            //     time: new Date().toLocaleTimeString()
-            //   })
+            db.collection("tasks").doc('spaceship_game').collection('subjects').doc(uid).update({
+                 subjectID: game.subjectID,
+                 date: new Date().toLocaleDateString(),
+                 time: new Date().toLocaleTimeString()
+               })
 
-            // game.db = db;
-            // game.uid = uid;
+             game.db = db;
+             game.uid = uid;
 
         });
         return true;
